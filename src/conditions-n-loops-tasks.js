@@ -316,13 +316,12 @@ function getBalanceIndex(arr) {
     }
     if (sumOfLeft === sumOfRight) {
       balanceElementIndex = i;
+      return balanceElementIndex;
     }
     sumOfLeft = 0;
     sumOfRight = 0;
   }
-  if (balanceElementIndex != null) {
-    return balanceElementIndex;
-  }
+
   return -1;
 }
 
