@@ -165,8 +165,57 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let digit = 0;
+  let newString = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    if (numberStr[i] === '-') {
+      newString += 'minus ';
+    } else if (numberStr[i] === '.' || numberStr[i] === ',') {
+      newString += 'point ';
+    } else {
+      digit = Number(numberStr[i]);
+      switch (digit) {
+        case 0:
+          newString += 'zero ';
+          break;
+        case 1:
+          newString += 'one ';
+          break;
+        case 2:
+          newString += 'two ';
+          break;
+        case 3:
+          newString += 'three ';
+          break;
+        case 4:
+          newString += 'four ';
+          break;
+        case 5:
+          newString += 'five ';
+          break;
+        case 6:
+          newString += 'six ';
+          break;
+        case 7:
+          newString += 'seven ';
+          break;
+        case 8:
+          newString += 'eight ';
+          break;
+        case 9:
+          newString += 'nine ';
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  let newStringTrimmed = '';
+  for (let i = 0; i < newString.length - 1; i += 1) {
+    newStringTrimmed += newString[i];
+  }
+  return newStringTrimmed;
 }
 
 /**
