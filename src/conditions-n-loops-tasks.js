@@ -21,8 +21,11 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  if (number >= 0) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -38,8 +41,16 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let maxNumber = null;
+  if (a > b) {
+    maxNumber = a;
+  } else if (b > c) {
+    maxNumber = b;
+  } else {
+    maxNumber = c;
+  }
+  return maxNumber;
 }
 
 /**
@@ -60,8 +71,15 @@ function getMaxNumber(/* a, b, c */) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  if (
+    queen.x === king.x ||
+    queen.y === king.y ||
+    Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)
+  ) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -82,8 +100,11 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if ((a === b || a === c || b === c) && a + b > c && a + c > b && b + c > a) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -100,8 +121,33 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let intPart = Math.trunc(num / 10);
+  let fractPart = num % 10;
+  let romanNum = '';
+  while (intPart !== 0) {
+    romanNum += 'X';
+    intPart -= 1;
+  }
+  if (fractPart === 5) {
+    romanNum += 'V';
+  } else if (fractPart === 4) {
+    romanNum += 'IV';
+  } else if (fractPart === 9) {
+    romanNum += 'IX';
+  } else if (fractPart >= 1 && fractPart < 4) {
+    while (fractPart !== 0) {
+      romanNum += 'I';
+      fractPart -= 1;
+    }
+  } else if (fractPart > 5 && fractPart < 9) {
+    romanNum += 'V';
+    while (fractPart !== 5) {
+      romanNum += 'I';
+      fractPart -= 1;
+    }
+  }
+  return romanNum;
 }
 
 /**
